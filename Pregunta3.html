@@ -1,18 +1,32 @@
 <html>
-<body>
-
-<h1>Ingrese temperatura en</h1>
-<form action="/action_page.php">
-    <input type="radio" id="Celcius" name="temperatura" value="30">
-  <label for="Celcius">Celcius</label><br>
-  <input type="radio" id="age2" name="temperatura" value="60">
-  <label for="Fanreheit">Fanreheit</label><br>  
-    <label for="fname">Ingresar temperatura</label>
-    <input type="text" id="fname" name="fname"><br><br>
-    <button type="button" onclick="alert('a')">Calcular</button>
-  </form>
-  
-
- 
-</body>
+  <head>
+    <title>Conversor de temperatura</title>
+    <script>
+      function calcular() {
+        const radios = document.getElementsByName("rdnTemp");
+        const selected = Array.from(radios).find(radio => radio.checked).value;
+        var temp = document.getElementById("temperatura").value;
+        if (selected == "gradosfahrenheit") {
+          var resultado = (temp - 32) * 5 / 9;
+          alert("La temperatura calculada es: " + resultado.toFixed(2) + " °C");
+        } else if (selected == "gradoscelsius") {
+          var resultado = (temp * 9 / 5) + 32;
+          alert("La temperatura calculada es: " + resultado.toFixed(2) + " °F");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Ingrese temperatura en</h1>
+    <label>
+      <input type="radio" name="rdnTemp" value="gradosfahrenheit"> Fahrenheit
+    </label>
+    <label>
+      <input type="radio" name="rdnTemp" value="gradoscelsius"> Celsius
+    </label>
+    <br><br>
+    <label>Ingrese temperatura: </label>
+    <input type="text" id="temperatura">
+    <button onclick="calcular()">Calcular</button>
+  </body>
 </html>
